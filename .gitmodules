@@ -1,0 +1,3 @@
+[submodule "packages/packages/remix_ui"]
+	path = packages/packages/remix_ui
+	url = https://github.com/conceptadev/remix_ui
