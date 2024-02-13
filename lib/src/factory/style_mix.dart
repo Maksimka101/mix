@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names, long-parameter-list, prefer-named-boolean-parameters
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../attributes/nested_style/nested_style_attribute.dart';
 import '../attributes/variant_attribute.dart';
@@ -404,4 +404,16 @@ Style Function(Iterable<T> attributes) _styleType<T extends SpecAttribute>() {
 
     return Style(merged);
   };
+}
+
+class AnimatedStyle extends Style {
+  final Curve curve;
+  final Duration duration;
+  final Style style;
+
+  const AnimatedStyle({
+    this.curve = Curves.bounceIn,
+    this.duration = const Duration(milliseconds: 300),
+    required this.style,
+  }) : super.empty();
 }

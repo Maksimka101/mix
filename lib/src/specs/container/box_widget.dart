@@ -4,6 +4,7 @@ import '../../core/styled_widget.dart';
 import '../../deprecations.dart';
 import '../../factory/mix_provider.dart';
 import '../../factory/mix_provider_data.dart';
+import '../../factory/style_mix.dart';
 import '../../utils/helper_util.dart';
 import 'box_attribute.dart';
 import 'box_spec.dart';
@@ -58,6 +59,15 @@ class Box extends StyledWidget {
     // This method uses `withMix` to get the `MixData` and then applies it to `MixedBox`,
     // effectively styling the [child].
     return withMix(context, (mix) {
+      if (style is AnimatedStyle) {
+        final style = this.style as AnimatedStyle;
+
+        return AnimatedMixedBox(
+          curve: style.curve,
+          duration: style.duration,
+        );
+      }
+
       return MixedBox(child: child);
     });
   }
